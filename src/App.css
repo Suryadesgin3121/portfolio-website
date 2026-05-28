@@ -907,11 +907,15 @@
   }
   .mission-inner {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 48px;
+  }
+  .mission-content {
+    order: 1;
   }
   .mission-image-frame {
+    order: 2;
     max-width: 480px;
-    margin: 0 auto;
+    margin: clamp(24px, 6vw, 56px) auto 0;
   }
   .mission-headline {
     font-size: clamp(1.05rem, 3vw, 1.5rem);
