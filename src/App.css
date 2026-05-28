@@ -1,321 +1,1154 @@
-.coming-soon {
+.hero {
   position: relative;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
+  isolation: isolate;
+  background: #0b0b0c;
   display: flex;
   flex-direction: column;
-  padding: clamp(24px, 4vw, 48px);
-  background:
-    radial-gradient(
-      ellipse 80% 50% at 50% 110%,
-      rgba(185, 255, 102, 0.15),
-      transparent 60%
-    ),
-    radial-gradient(
-      ellipse 60% 40% at 10% 20%,
-      rgba(120, 90, 255, 0.18),
-      transparent 60%
-    ),
-    var(--bg);
 }
 
-.grid-bg {
+.hero-bg {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(
-    ellipse at center,
-    black 30%,
-    transparent 75%
-  );
-  -webkit-mask-image: radial-gradient(
-    ellipse at center,
-    black 30%,
-    transparent 75%
-  );
-  opacity: 0.5;
-  pointer-events: none;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
 }
 
-.noise {
+.hero-bg::after {
+  content: '';
   position: absolute;
   inset: 0;
-  opacity: 0.04;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.9'/></svg>");
-}
-
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  will-change: transform;
-}
-
-.orb-1 {
-  width: 420px;
-  height: 420px;
-  background: radial-gradient(circle, rgba(185, 255, 102, 0.35), transparent 70%);
-  top: -120px;
-  right: -80px;
-}
-
-.orb-2 {
-  width: 520px;
-  height: 520px;
-  background: radial-gradient(circle, rgba(120, 90, 255, 0.3), transparent 70%);
-  bottom: -160px;
-  left: -120px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0) 35%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
 }
 
 .nav {
   position: relative;
   z-index: 2;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-family: 'Space Grotesk', sans-serif;
+  justify-content: space-between;
+  padding: clamp(20px, 3vw, 60px) clamp(20px, 2.7vw, 52px);
 }
 
 .logo {
-  font-size: 1.1rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
+  height: clamp(24px, 2.4vw, 38px);
 }
 
-.logo-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 12px var(--accent);
+.logo img {
+  height: 100%;
+  width: auto;
+  display: block;
 }
 
-.nav-status {
-  display: flex;
+.menu {
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.85rem;
-  color: var(--muted);
-  padding: 8px 14px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  backdrop-filter: blur(8px);
-  background: rgba(255, 255, 255, 0.02);
+  justify-content: center;
+  width: clamp(26px, 2vw, 32px);
+  height: clamp(26px, 2vw, 32px);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
-.status-pulse {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  position: relative;
+.menu img {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-.status-pulse::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  background: var(--accent);
-  opacity: 0.35;
-  animation: ping 1.8s ease-out infinite;
-}
-
-@keyframes ping {
-  0% { transform: scale(0.8); opacity: 0.5; }
-  100% { transform: scale(2.2); opacity: 0; }
-}
-
-.main {
+.hero-content {
   position: relative;
   z-index: 2;
   flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   justify-content: center;
-  max-width: 1100px;
+  padding: 0 clamp(20px, 2.7vw, 52px);
   width: 100%;
+  max-width: 1920px;
   margin: 0 auto;
 }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--muted);
-  margin-bottom: 28px;
+.lede {
+  width: 100%;
+  max-width: 946px;
+  margin-left: auto;
+  font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho Pro',
+    'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(1.05rem, 1.9vw, 2.25rem);
+  line-height: 1.288;
+  color: #fff;
 }
 
-.eyebrow-line {
-  width: 36px;
-  height: 1px;
-  background: var(--muted);
-}
-
-.title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(3rem, 11vw, 10rem);
-  line-height: 0.9;
-  font-weight: 500;
-  letter-spacing: -0.05em;
-  margin-bottom: 32px;
-}
-
-.title .word {
+.word-wrap {
   display: inline-block;
   overflow: hidden;
-  padding: 0 0.05em;
-  margin-right: 0.04em;
+  vertical-align: bottom;
 }
 
-.title .char {
+.word {
   display: inline-block;
   will-change: transform;
 }
 
-.title .accent {
-  font-style: italic;
-  font-weight: 300;
-  background: linear-gradient(120deg, var(--accent), #7eea3a);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.subtitle {
-  max-width: 520px;
-  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
-  line-height: 1.6;
-  color: var(--muted);
-  margin-bottom: 40px;
-}
-
-.form-row {
-  display: flex;
-  gap: 12px;
-  max-width: 480px;
+.cta {
+  margin-top: clamp(18px, 2.4vw, 32px);
+  margin-left: auto;
   width: 100%;
-  flex-wrap: wrap;
-}
-
-.email-input {
-  flex: 1;
-  min-width: 220px;
-  padding: 16px 20px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(8px);
-  transition: border-color 0.2s, background 0.2s;
-  outline: none;
-}
-
-.email-input::placeholder {
-  color: var(--muted);
-}
-
-.email-input:focus {
-  border-color: var(--accent);
-  background: rgba(185, 255, 102, 0.05);
-}
-
-.notify-btn {
-  position: relative;
-  padding: 16px 28px;
-  border-radius: 999px;
-  border: none;
-  background: var(--accent);
-  color: #0a0a0f;
-  font-weight: 600;
-  cursor: pointer;
-  overflow: hidden;
-  transition: transform 0.2s;
-}
-
-.notify-btn:hover {
-  transform: translateY(-1px);
-}
-
-.notify-btn .btn-inner {
+  max-width: 946px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  font-family: 'Futura', 'Trebuchet MS', 'Space Grotesk', sans-serif;
+  font-size: clamp(0.78rem, 1.05vw, 1.125rem);
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
-.countdown {
+.cta:hover {
+  opacity: 0.85;
+}
+
+.cta:hover .cta-arrow {
+  transform: translateX(4px);
+}
+
+.cta-arrow {
+  width: clamp(14px, 1.1vw, 18px);
+  height: clamp(14px, 1.1vw, 18px);
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.brand-large {
   position: relative;
-  z-index: 2;
-  display: flex;
-  gap: clamp(16px, 3vw, 36px);
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
   margin-top: auto;
-  padding-top: 32px;
-  border-top: 1px solid var(--border);
-  font-family: 'Space Grotesk', sans-serif;
+  pointer-events: none;
+  user-select: none;
 }
 
-.count-item {
+/* Smaller desktop / large laptop — narrow the right column so it doesn't crowd the edge */
+@media (max-width: 1400px) {
+  .lede,
+  .cta {
+    max-width: min(60%, 720px);
+  }
+}
+
+@media (max-width: 1100px) {
+  .lede,
+  .cta {
+    max-width: 64%;
+  }
+}
+
+/* Tablet — drop the right-column alignment, anchor near the top */
+@media (max-width: 900px) {
+  .hero-content {
+    justify-content: flex-start;
+    padding-top: clamp(40px, 10vh, 96px);
+  }
+  .lede,
+  .cta {
+    margin-left: 0;
+    max-width: 100%;
+  }
+  .lede {
+    font-size: clamp(1rem, 2.4vw, 1.5rem);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .nav {
+    padding: 18px 20px;
+  }
+  .hero-content {
+    padding: clamp(28px, 7vh, 56px) 20px 0;
+  }
+  .lede {
+    font-size: 1.0625rem;
+    line-height: 1.35;
+  }
+  .cta {
+    font-size: 0.78rem;
+    margin-top: 18px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 380px) {
+  .lede {
+    font-size: 1rem;
+  }
+}
+
+/* Short viewport — keep content above the brand wordmark */
+@media (max-height: 640px) and (min-width: 900px) {
+  .hero-content {
+    justify-content: flex-end;
+    padding-bottom: clamp(20px, 4vh, 40px);
+  }
+}
+
+/* ============== About section ============== */
+
+.stack-about-work {
+  position: relative;
+}
+
+.about {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  width: 100%;
+  background: #fff;
+  color: #000;
+  height: 100vh;
+  height: 100svh;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  justify-content: flex-end;
+  padding: clamp(80px, 12vh, 200px) clamp(20px, 2.7vw, 52px)
+    clamp(60px, 10vh, 112px);
 }
 
-.count-value {
-  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  min-width: 2ch;
+.about-inner {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
-.count-label {
-  font-size: 0.72rem;
+.about-eyebrow {
+  font-family: 'Futura Now Headline', Futura, 'Trebuchet MS',
+    'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.875rem, 1.05vw, 1.125rem);
+  color: #5c5c5c;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin: 0 0 clamp(40px, 6vh, 68px);
 }
 
-.socials {
-  margin-left: auto;
-  display: flex;
-  gap: 8px;
-  align-items: center;
+.about-heading {
+  max-width: 1106px;
+  font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho Pro',
+    'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 2.8vw, 3.0625rem);
+  line-height: 1.1;
+  color: #000;
+  letter-spacing: -0.005em;
+  margin: 0;
 }
 
-.social-link {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
+.about-heading .word-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.about-heading .word {
+  display: inline-block;
+  will-change: transform;
+}
+
+@media (max-width: 900px) {
+  .about {
+    justify-content: center;
+  }
+  .about-heading {
+    font-size: clamp(1.35rem, 4.2vw, 2rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .about {
+    padding: clamp(60px, 9vh, 100px) 20px clamp(40px, 8vh, 72px);
+  }
+  .about-eyebrow {
+    margin-bottom: clamp(28px, 5vh, 44px);
+    font-size: 0.875rem;
+  }
+  .about-heading {
+    font-size: clamp(1.25rem, 5.4vw, 1.6rem);
+    line-height: 1.18;
+  }
+}
+
+/* ============== Work section (stacks on top of About) ============== */
+
+.work {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.work-slide {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  background: #1a1a1a;
+}
+
+.work-bg-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.work-bg {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 140%;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+  transform-origin: center;
+}
+
+.work-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.33);
+}
+
+.work-tag {
+  position: absolute;
+  z-index: 2;
+  top: clamp(28px, 6vh, 72px);
+  left: clamp(20px, 2.7vw, 51px);
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  color: var(--muted);
-  transition: color 0.2s, border-color 0.2s, transform 0.2s;
+  gap: 6px;
+  font-family: 'Futura Now Headline', Futura, 'Trebuchet MS',
+    'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.875rem, 1.05vw, 1.125rem);
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-transform: uppercase;
 }
 
-.social-link:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-  transform: translateY(-2px);
+.work-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  display: inline-block;
 }
 
-@media (max-width: 720px) {
-  html, body { overflow: auto; }
-  #root { height: auto; min-height: 100vh; }
-  .coming-soon { min-height: 100vh; height: auto; }
-  .countdown { flex-wrap: wrap; }
-  .socials { margin-left: 0; width: 100%; justify-content: flex-start; }
+.work-text {
+  position: absolute;
+  z-index: 2;
+  bottom: clamp(40px, 5.4vh, 58px);
+  left: clamp(20px, 2.7vw, 51px);
+  right: clamp(20px, 2.7vw, 51px);
+  max-width: 988px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2.5vh, 28px);
+  color: #fff;
+}
+
+.work-title {
+  font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho Pro',
+    'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 2.8vw, 3.0625rem);
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: -0.005em;
+}
+
+.work-title .word-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.work-title .word {
+  display: inline-block;
+  will-change: transform;
+}
+
+.work-body {
+  font-family: 'Futura Now Headline', Futura, 'Trebuchet MS',
+    'Space Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.95rem, 1.3vw, 1.5rem);
+  line-height: 1.16;
+  max-width: 659px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.work-logo {
+  position: absolute;
+  z-index: 2;
+  bottom: clamp(40px, 7vh, 80px);
+  right: clamp(20px, 2.7vw, 51px);
+  height: auto;
+  filter: brightness(0) invert(1);
+  user-select: none;
+  pointer-events: none;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .work-text {
+    bottom: clamp(28px, 5vh, 48px);
+    gap: 14px;
+  }
+  .work-title {
+    font-size: clamp(1.35rem, 4.2vw, 2rem);
+  }
+  .work-body {
+    font-size: clamp(0.9rem, 2vw, 1.15rem);
+  }
+  .work-logo {
+    bottom: auto;
+    top: clamp(28px, 6vh, 60px);
+    right: clamp(20px, 2.7vw, 51px);
+  }
+}
+
+@media (max-width: 600px) {
+  .work-slide {
+    min-height: 520px;
+  }
+  .work-tag {
+    top: 24px;
+    left: 20px;
+  }
+  .work-text {
+    bottom: 28px;
+    left: 20px;
+    right: 20px;
+    gap: 12px;
+  }
+  .work-title {
+    font-size: clamp(1.25rem, 5.4vw, 1.6rem);
+    line-height: 1.18;
+  }
+  .work-body {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+  .work-logo {
+    top: 24px;
+    right: 20px;
+    max-width: 90px;
+    max-height: 36px;
+  }
+}
+
+/* ============== The Idea section (stacks on top of Work) ============== */
+
+.idea {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  background: linear-gradient(180deg, #000 0%, #000 62%, #ffffff 100%);
+  color: #fff;
+  overflow: hidden;
+  isolation: isolate;
+  padding: clamp(80px, 12vw, 196px) clamp(20px, 2.7vw, 51px)
+    clamp(120px, 22vw, 377px);
+}
+
+.idea-bg {
+  position: absolute;
+  top: -25%;
+  left: -10%;
+  width: 120%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  will-change: transform;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    #000 55%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    #000 0%,
+    #000 55%,
+    transparent 100%
+  );
+}
+
+.idea-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1819px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 6vw, 96px);
+}
+
+.idea-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: clamp(24px, 4vw, 80px);
+}
+
+.idea-eyebrow {
+  flex-shrink: 0;
+  font-family: 'Futura Now Headline', Futura, 'Trebuchet MS',
+    'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.875rem, 1.05vw, 1.125rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #a3a3a3;
+  margin: 0;
+  padding-top: 6px;
+}
+
+.idea-body {
+  flex: 1;
+  max-width: 1200px;
+  font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho Pro',
+    'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(1.35rem, 2.55vw, 3.0625rem);
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+  color: #fff;
+  margin: 0;
+}
+
+.idea-body .word-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.idea-body .word {
+  display: inline-block;
+  will-change: transform;
+}
+
+.idea-image-frame {
+  align-self: center;
+  width: 100%;
+  max-width: 553px;
+  aspect-ratio: 553 / 637;
+  overflow: hidden;
+  position: relative;
+}
+
+.idea-image {
+  position: absolute;
+  inset: -6% 0;
+  width: 100%;
+  height: 112%;
+  object-fit: cover;
+  will-change: transform;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .idea-top {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .idea-eyebrow {
+    padding-top: 0;
+  }
+  .idea-body {
+    font-size: clamp(1.25rem, 3.6vw, 2rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .idea {
+    padding: 80px 20px 120px;
+  }
+  .idea-body {
+    font-size: clamp(1.1rem, 5vw, 1.5rem);
+    line-height: 1.2;
+  }
+  .idea-image-frame {
+    max-width: 100%;
+  }
+}
+
+/* ============== Services section (stacks on top of Idea) ============== */
+
+.services {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  background: #fff;
+  color: #010101;
+  padding: clamp(40px, 5vw, 79px) clamp(20px, 2.7vw, 51px)
+    clamp(60px, 8vh, 120px);
+}
+
+.services-eyebrow {
+  text-align: center;
+  font-family: 'Futura Now Headline', Futura, 'Trebuchet MS',
+    'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.875rem, 1.05vw, 1.125rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #171717;
+  margin: 0;
+}
+
+.services-canvas {
+  width: 100%;
+  max-width: 1819px;
+  margin: clamp(40px, 6vh, 96px) auto 0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto auto auto;
+  row-gap: clamp(40px, 6vh, 80px);
+  column-gap: clamp(12px, 1.5vw, 24px);
+  align-items: start;
+}
+
+.service {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(20px, 2.5vw, 56px);
+}
+
+.service-num {
+  flex-shrink: 0;
+  font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho Pro',
+    'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 2.8vw, 3.0625rem);
+  line-height: 1.1;
+  color: #010101;
+  letter-spacing: -0.005em;
+}
+
+.service-meta {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.4vw, 18px);
+  max-width: 523px;
+}
+
+.service-title {
+  font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho Pro',
+    'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 2.8vw, 3.0625rem);
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+  margin: 0;
+  color: #010101;
+  white-space: nowrap;
+}
+
+.service-body {
+  font-family: 'Futura Now Headline', Futura, 'Trebuchet MS',
+    'Space Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.95rem, 1.3vw, 1.5rem);
+  line-height: 1.16;
+  color: #010101;
+  margin: 0;
+}
+
+.service-image-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 603px;
+  aspect-ratio: 603 / 381;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.service-image {
+  position: absolute;
+  top: -18%;
+  left: -4.5%;
+  width: 106%;
+  height: 134.5%;
+  object-fit: cover;
+  display: block;
+  will-change: transform;
+}
+
+/* Desktop scatter: matches the Figma triangular composition */
+@media (min-width: 901px) {
+  .service-s1 {
+    grid-column: 4 / 10;
+    grid-row: 1;
+  }
+  .service-image-wrap {
+    grid-column: 5 / 9;
+    grid-row: 2;
+    justify-self: center;
+    align-self: start;
+  }
+  .service-s2 {
+    grid-column: 8 / 13;
+    grid-row: 2;
+    align-self: start;
+  }
+  .service-s3 {
+    grid-column: 3 / 9;
+    grid-row: 3;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 900px) {
+  .services-canvas {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(40px, 6vh, 72px);
+  }
+  .service-image-wrap {
+    order: 2;
+  }
+  .service-title {
+    font-size: clamp(1.5rem, 4.2vw, 2.2rem);
+    white-space: normal;
+  }
+  .service-num {
+    font-size: clamp(1.5rem, 4.2vw, 2.2rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .services {
+    padding: 60px 20px 80px;
+  }
+  .service {
+    gap: 16px;
+  }
+  .service-title {
+    font-size: clamp(1.35rem, 6vw, 1.8rem);
+    line-height: 1.18;
+  }
+  .service-num {
+    font-size: clamp(1.35rem, 6vw, 1.8rem);
+  }
+  .service-body {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+}
+
+/* ============== Our Mission section (stacks on top of Services) ============== */
+
+.mission {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  color: #fff;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #ffffff 4%,
+    #000000 28%,
+    #000000 100%
+  );
+  padding: clamp(220px, 32vw, 560px) clamp(20px, 2.7vw, 52px)
+    clamp(80px, 10vw, 160px);
+}
+
+.mission-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1819px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(40px, 4vw, 80px);
+  align-items: start;
+}
+
+.mission-image-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 859 / 959;
+  overflow: hidden;
+}
+
+.mission-image {
+  position: absolute;
+  top: -29.5%;
+  left: -15.61%;
+  width: 115.61%;
+  height: 129.5%;
+  object-fit: cover;
+  display: block;
+  will-change: transform;
+}
+
+.mission-image-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 21%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.26) 18%,
+    #000 100%
+  );
+  pointer-events: none;
+}
+
+.mission-content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 3.5vh, 52px);
+  padding-top: clamp(0px, 1.5vh, 16px);
+}
+
+.mission-eyebrow {
+  font-family: 'Futura Now Headline', Futura, 'Trebuchet MS',
+    'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.875rem, 1.05vw, 1.125rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+}
+
+.mission-headline {
+  font-family: 'Hiragino Mincho ProN', 'Hiragino Mincho Pro',
+    'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(1.1rem, 1.75vw, 2rem);
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  color: #fff;
+  margin: 0;
+  max-width: 820px;
+}
+
+.mission-headline .word-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.mission-headline .word {
+  display: inline-block;
+  will-change: transform;
+}
+
+.mission-body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 2vh, 28px);
+  max-width: 739px;
+  margin-top: clamp(20px, 3vh, 48px);
+}
+
+.mission-body p {
+  font-family: 'Futura Now Headline', Futura, 'Trebuchet MS',
+    'Space Grotesk', sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.95rem, 1.3vw, 1.5rem);
+  line-height: 1.16;
+  color: #fff;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .mission {
+    padding: clamp(160px, 26vw, 320px) clamp(20px, 2.7vw, 52px)
+      clamp(60px, 10vw, 100px);
+  }
+  .mission-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .mission-image-frame {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .mission-headline {
+    font-size: clamp(1.05rem, 3vw, 1.5rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .mission {
+    padding: 160px 20px 80px;
+    background: linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #ffffff 2%,
+      #000000 18%,
+      #000000 100%
+    );
+  }
+  .mission-headline {
+    font-size: clamp(1rem, 4vw, 1.25rem);
+    line-height: 1.35;
+  }
+  .mission-body p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}
+
+/* ============== Footer ============== */
+
+.footer {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  background: #000;
+  color: #fff;
+  border-top: 1px solid rgba(172, 172, 172, 0.6);
+  padding: clamp(60px, 8vh, 108px) clamp(20px, 2.7vw, 56px) 0;
+  font-family: 'Hanken Grotesk', 'Inter', system-ui, sans-serif;
+}
+
+.footer-inner {
+  width: 100%;
+  max-width: 1819px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)
+    minmax(0, 1fr) auto;
+  gap: clamp(24px, 2.5vw, 48px);
+  align-items: flex-start;
+  padding-bottom: clamp(40px, 6vh, 100px);
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.4vw, 22px);
+}
+
+.footer-credit {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.footer-credit p {
+  margin: 0;
+  font-family: 'Hanken Grotesk', 'Inter', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.05rem, 1.4vw, 1.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: #fff;
+}
+
+.footer-mark {
+  flex-shrink: 0;
+  width: clamp(13px, 0.9vw, 17px);
+  height: clamp(13px, 0.9vw, 17px);
+  background: #c96b00;
+  display: inline-block;
+  margin-top: clamp(4px, 0.3vw, 7px);
+}
+
+.footer-label {
+  margin: 0;
+  font-family: 'Hanken Grotesk', 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.05rem, 1.5vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.footer-value {
+  font-family: 'Hanken Grotesk', 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(1rem, 1.35vw, 1.625rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.footer-value:hover {
+  opacity: 0.7;
+}
+
+.footer-field input {
+  width: 100%;
+  max-width: 423px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #acacac;
+  padding: clamp(14px, 1.6vw, 28px) 0;
+  color: #fff;
+  font-family: 'Hanken Grotesk', 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.95rem, 1.25vw, 1.5rem);
+  letter-spacing: -0.01em;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.footer-field input::placeholder {
+  color: #b5b5b5;
+}
+
+.footer-field input:focus {
+  border-bottom-color: #fff;
+}
+
+.footer-submit-col {
+  align-self: end;
+  padding-bottom: clamp(10px, 1.2vw, 18px);
+}
+
+.footer-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: clamp(12px, 1.2vw, 18px) clamp(24px, 2.2vw, 36px);
+  background: #fff;
+  color: #000;
+  border: 1px solid #fff;
+  border-radius: 999px;
+  font-family: 'Hanken Grotesk', 'Inter', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(0.95rem, 1.1vw, 1.125rem);
+  letter-spacing: -0.005em;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-submit:hover {
+  background: transparent;
+  color: #fff;
+}
+
+.footer-submit:hover .footer-submit-arrow {
+  filter: brightness(0) invert(1);
+  transform: translateX(4px);
+}
+
+.footer-submit-arrow {
+  width: clamp(14px, 1vw, 18px);
+  height: clamp(14px, 1vw, 18px);
+  display: block;
+  transition: transform 0.25s ease, filter 0.2s ease;
+}
+
+.footer-divider {
+  width: 100%;
+  max-width: 1819px;
+  margin: 0 auto;
+  height: 1px;
+  background: rgba(172, 172, 172, 0.6);
+}
+
+.footer-copy {
+  width: 100%;
+  max-width: 1819px;
+  margin: clamp(24px, 3vh, 40px) auto 0;
+  padding-bottom: clamp(24px, 4vh, 60px);
+  font-family: 'Hanken Grotesk', 'Inter', system-ui, sans-serif;
+  font-weight: 300;
+  font-size: clamp(1rem, 1.35vw, 1.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 900px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .footer-credit,
+  .footer-contact,
+  .footer-field {
+    grid-column: span 1;
+  }
+  .footer-submit-col {
+    grid-column: 1 / -1;
+    align-self: start;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 60px 20px 0;
+  }
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-bottom: 32px;
+  }
+  .footer-credit p,
+  .footer-label,
+  .footer-copy {
+    font-size: 1.05rem;
+  }
+  .footer-value {
+    font-size: 1rem;
+  }
+  .footer-field input {
+    font-size: 1rem;
+    padding: 14px 0;
+  }
+  .footer-submit-col {
+    padding-bottom: 0;
+  }
+  .footer-submit {
+    width: 100%;
+    justify-content: center;
+    font-size: 1rem;
+    padding: 14px 24px;
+  }
 }
